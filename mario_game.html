@@ -1353,13 +1353,13 @@ function generateLevel(id) {
                        : new Platform(baseX, py, pw, 18));
       }
     }
-    // Coin arc over gap (guides the player)
+    // Coins over gap — flat horizontal line
     const n = Math.max(3, Math.floor(gap.w / 38));
     for (let i = 0; i < n; i++) {
       const t2 = i / (n - 1 || 1);
       coins.push(new Coin(
         gap.x + gap.w * t2,
-        GH - 85 - Math.sin(Math.PI * t2) * 100
+        GH - 85
       ));
     }
   });
@@ -1383,7 +1383,7 @@ function generateLevel(id) {
   plats.filter(p => p.rect.h === 18).forEach(p => {
     const n = Math.floor(p.rect.w / 32);
     for (let i = 0; i < n; i++) {
-      if (r() < 0.65) coins.push(new Coin(p.rect.x + 16 + i * 32, p.rect.y - 28));
+      coins.push(new Coin(p.rect.x + 16 + i * 32, p.rect.y - 28));
     }
   });
   gSegs.forEach(seg => {
